@@ -6,6 +6,9 @@ This repository contains source code of the experiments presented in
 
 DOI: 10.21437/Interspeech.2020-3088
 
+![Spectrum Correction Interspeech 2020 slides thumbnail.](Interspeech%202020%20thumbnail.png)
+Slides from Interspeech 2020 can be found in `./Interspeech 2020 slides.mp4`
+
 ## Table of Contents
 1. [Description](#Description)
     * [Selected Results](#Results)
@@ -121,7 +124,7 @@ and reusing examples from developement set:
 ### <a name="Experiments"></a> Experiments
 
 Training is performed using the `./train.py` script. 
-Options can be view using
+Options can be viewed using
 ```shell script
 ./train.py --help
 ```
