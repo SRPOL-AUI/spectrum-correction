@@ -83,7 +83,7 @@ def wave(example, correction, normalize, log_scale):
     return audio
 
 
-def spectrogram(example, correction, num_fft, hop_length, power, num_mels, htk, norm, normalize=False):
+def spectrogram(example, correction, num_fft, hop_length, power, num_mels, htk, norm, normalize=False, eps=1e-7):
     """Read and preprocess an audio file to a log-melspectrogram.
 
     Args:
@@ -120,6 +120,8 @@ def spectrogram(example, correction, num_fft, hop_length, power, num_mels, htk, 
     spec = librosa.feature.melspectrogram(
         S=spec ** power, sr=sample_rate, n_mels=num_mels, htk=htk, norm=1 if norm else None
     )
+
+    spec = np.log(spec + eps)
 
     return spec
 
