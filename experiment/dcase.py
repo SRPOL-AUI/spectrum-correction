@@ -1,6 +1,8 @@
 """Utils for DCASE 2019 Mobile dataset"""
 
+import logging
 import pathlib
+
 import numpy as np
 import pandas as pd
 
@@ -56,6 +58,9 @@ _TRAIN_PATH = 'evaluation_setup/fold1_train.csv'
 _SEP = '\t'
 
 
+logger = logging.getLogger(__name__)
+
+
 def _parse_path(path):
     splits = str(pathlib.Path(path).stem).split('-')
     assert len(splits) == 5
@@ -76,20 +81,35 @@ def _expand_frame(files):
     })
 
 
-def download(data_dir):
+def download(data_dir, retries=16):
     """Download the dataset to the specified directory.
 
     Args:
         data_dir: output directory
+        retries: number of retries
     """
     for file in _FILES:
-        keras.utils.get_file(
-            file,
-            _URL.format(file=file),
-            extract=True,
-            cache_subdir='',
-            cache_dir=str(data_dir),
-        )
+        retry = 0
+        while True:
+            try:
+                keras.utils.get_file(
+                    file,
+                    _URL.format(file=file),
+                    extract=True,
+                    cache_subdir='',
+                    cache_dir=str(data_dir),
+                )
+                break
+            except:
+                if retry < retries:
+                    retry += 1
+                    logger.error(
+                        f'There was an error while downloading "{file}". '
+                        f'Retrying download ({retry}/{retries}).'
+                    )
+                    continue
+                else:
+                    raise
 
 
 def get_correction_recordings(dcase_frame, num_samples, random_state=None):

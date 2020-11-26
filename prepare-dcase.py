@@ -270,7 +270,7 @@ if __name__ == '__main__':
                         help='disable spectrum correction')
     parser.add_argument('--no-standardization', action='store_true',
                         help='disable standardization of the features')
-    parser.add_argument('--reference', default=None,
+    parser.add_argument('--reference', default='a',
                         help='reference devices for spectrum correction')
     parser.add_argument('--aligned', action='store_true',
                         help='use aligned variant of the spectrum correction')
