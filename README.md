@@ -84,6 +84,8 @@ Download and preprocess the dataset, then train the model:
 ./prepare-dcase.py 0 data/dcase.h5
 ./train.py --reproducible --mixup-exp --mixup 0.4 data/dcase.h5 baseline
 ```
+The raw dataset should get downloaded and extracted automatically, when `./prepare-dcase.py` is executed for the first time.
+
 Launch TensorBoard to view the results:
 ```shell script
 . venv/bin/activate
