@@ -3,7 +3,7 @@
 
 This repository contains source code of the experiments presented in 
 
-["Spectrum Correction: Acoustic Scene Classification with Mismatched Recording Devices"](https://www.isca-speech.org/archive/Interspeech_2020/abstracts/3088.html).
+["Spectrum Correction: Acoustic Scene Classification with Mismatched Recording Devices"](https://www.doi.org/10.21437/Interspeech.2020-3088).
 
 DOI: 10.21437/Interspeech.2020-3088
 
